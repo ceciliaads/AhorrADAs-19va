@@ -15,7 +15,7 @@
 <body class="bg-slate-200">
     <div>    
         <!------------------------------------ CATEGORIA --------------------------------------->
-        <section class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-screen" >
+        <section class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-screen hidden" >
             <div>
                 <h2 class="text-6xl p-3">
                     Categorías
@@ -25,33 +25,21 @@
                 </label>
                 <div class="p-4">
                     <div class="flex flitems-center justify-center">
-                        <input type="text" id="add-input-category" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500" >
+                        <input type="text" id="inputCategory" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500" >
                         <button id="add-category-btn" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Agregar
                         </button>
                     </div>
                 </div>
                 <div class="p-4">
-                    <ul>
-                        <li class="flex flex-row">
-                            <span class="py-1 px-1">
-                                Comida
-                            </span>
-                            <div class="">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 rounded">
-                                    Editar
-                                </button>
-                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded">
-                                    Eliminar
-                                </button>
-                            </div>
-                        </li>
+                    <ul id="categoryList">
+                        <!--------------------- Completo Categorias --------------------->
                     </ul>
                 </div>
             </div>
         </section>
         <!-------------------------------- SECCIÓN EDITAR CATEGORIA ---------------------------->
-        <section class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md hidden">
+        <section class="formEdit max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md ">
             <div>
                 <h2 class="text-2xl font-bold">
                     Editar Categoría
