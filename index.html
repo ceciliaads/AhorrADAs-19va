@@ -12,31 +12,36 @@
     <!-- TAILWIND CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<!--flex fuentes tamaños-->
 <body class="bg-slate-200">
     <div>    
         <!------------------------------------ CATEGORIA --------------------------------------->
-        <section class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md " >
+        <section class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-screen" >
             <div>
-                <h2 class="text-6xl">Categorías</h2>
-                <label for="categorias-input" class="text-2xl font-bold">Nombre</label>
-                <div class=" flex">
-                    <div>
+                <h2 class="text-6xl p-3">
+                    Categorías
+                </h2>
+                <label for="categorias-input" class="text-2xl font-bold p-2 m-2">
+                    Nombre
+                </label>
+                <div class="p-4">
+                    <div class="flex flitems-center justify-center">
                         <input type="text" id="add-input-category" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500" >
-                    </div>
-                    <div class="p-1">
-                        <button id="add-category-btn" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agregar</button>
+                        <button id="add-category-btn" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Agregar
+                        </button>
                     </div>
                 </div>
-                <div>
+                <div class="p-4">
                     <ul>
                         <li class="flex flex-row">
-                            <span>Comida</span>
-                            <div>
-                                <button>
+                            <span class="py-1 px-1">
+                                Comida
+                            </span>
+                            <div class="">
+                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 rounded">
                                     Editar
                                 </button>
-                                <button class="">
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded">
                                     Eliminar
                                 </button>
                             </div>
@@ -46,35 +51,44 @@
             </div>
         </section>
         <!-------------------------------- SECCIÓN EDITAR CATEGORIA ---------------------------->
-        <section class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md">
+        <section class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md hidden">
             <div>
-                <h2>Editar Categoría</h2>
-                <label for="">Nombre</label>
+                <h2 class="text-2xl font-bold">
+                    Editar Categoría
+                </h2>
+                <label for="" class="font-bold">
+                    Nombre
+                </label>
                 <div>
                     <input type="text" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
                 </div>
-                <div class="text-left">
-                    <button class="bg-red-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded">
+                <div class="flex justify-end items-start self-end p-2 m-2">
+                    <button class="bg-red-500 hover:bg-red-700 m-1 text-white font-bold py-2 px-4 rounded">
                         Cancelar
                     </button>
-                    <button class="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded">
+                    <button class="bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded">
                         Editar
                     </button>
                 </div>
             </div>
         </section>
         <!-------------------------------- SECCIÓN REPORTES ----------------------------------->
-        <section class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md">
+        <section class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-screen hidden">
             <div>
-                <h2>Reportes</h2>
-                <div>
-                    <figure>
-                        <img src="" alt="">
+                <h2 class="text-6xl p-2">Reportes</h2>
+                <div class=" p-6">
+                    <figure class="max-w-md mx-auto p-4 ">
+                        <img src="https://frontend-proyecto-ahorradas.adaitw.org/imgs/chart.svg" alt="image" class="max-w-full">
                     </figure>
+                </div>
+                <div class="flex flex-col items-center justify-center py-2 px-2">
+                    <h2 class="text-2xl font-bold p-4">Operaciones Insuficientes</h2>
+                    <p>Prueba agregando más operaciones</p>
                 </div>
             </div>
         </section>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>
