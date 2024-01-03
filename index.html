@@ -15,8 +15,8 @@
 <body class="bg-slate-200">
     <div>    
         <!------------------------------------ CATEGORIA --------------------------------------->
-        <section class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-screen hidden" >
-            <div>
+        <section id="sectionCategory" class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-full " >
+            <div class=" h-5/6">
                 <h2 class="text-6xl p-3">
                     Categorías
                 </h2>
@@ -26,35 +26,38 @@
                 <div class="p-4">
                     <div class="flex flitems-center justify-center">
                         <input type="text" id="inputCategory" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500" >
-                        <button id="add-category-btn" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button id="add-category-btn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             Agregar
                         </button>
                     </div>
                 </div>
                 <div class="p-4">
-                    <ul id="categoryList">
+                    <ul id="categoryList" class="">
                         <!--------------------- Completo Categorias --------------------->
                     </ul>
                 </div>
             </div>
         </section>
         <!-------------------------------- SECCIÓN EDITAR CATEGORIA ---------------------------->
-        <section class="formEdit max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md ">
+        <section id="sectionEdit" class="formEdit max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md hidden">
             <div>
                 <h2 class="text-2xl font-bold">
                     Editar Categoría
                 </h2>
-                <label for="" class="font-bold">
+                <label for="name" class="font-bold">
                     Nombre
                 </label>
                 <div>
-                    <input type="text" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                    <input id="inputName" type="text" class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                    <p id="textEdit" class="font-bold text-red-500 hidden">
+                        *Completar el Campo
+                    </p>
                 </div>
                 <div class="flex justify-end items-start self-end p-2 m-2">
                     <button class="bg-red-500 hover:bg-red-700 m-1 text-white font-bold py-2 px-4 rounded">
                         Cancelar
                     </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded">
+                    <button id="bttnConfirm" class="bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded">
                         Editar
                     </button>
                 </div>
@@ -76,7 +79,6 @@
             </div>
         </section>
     </div>
-
     <script src="main.js"></script>
 </body>
 </html>
