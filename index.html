@@ -7,7 +7,10 @@
     <title>AhorrADAs</title>
 
     <!-- CSS LINK -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- FONT AWESOME LINK -->
+    <script src="https://kit.fontawesome.com/b82efd4820.js" crossorigin="anonymous"></script>
 
     <!-- TAILWIND CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,5 +19,59 @@
 <body>
     <script src="main.js"></script>
 </body>
+<!-- -------------------------- NAVBAR  -------------------------- -->
+
+<!-- <nav class="bg-teal-300">
+
+</nav> -->
+<nav class="bg-teal-300 py-4">
+    <div class="mx-auto  lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="flex flex-1 items-center justify-between ">
+                <div class="flex flex-shrink-0 items-center hover:bg-teal-500 rounded-md px-3 py-2">
+                    <h1 class="text-white text-4xl font-medium">
+                        <i class="fa-solid fa-wallet"></i>
+                        AhorraADAs
+                    </h1>
+                </div>
+                <div class="hidden sm:ml-6 sm:block ">
+                    <div class="flex space-x-4">
+
+                        <a href="#" class="text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
+                            aria-current="page">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Balance
+                        </a>
+                        <a href="#" class="text-white hover:bg-teal-500  rounded-md px-3 py-2 text-md font-normal">
+                            <i class="fa-solid fa-tag"></i>
+                            Categories
+                        </a>
+                        <a href="#"
+                            class="text-white hover:bg-teal-500 hover:text-white rounded-md px-3 py-2 text-md font-normal">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            Reports
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="hamburger-menu">
+                <i class="fa-solid fa-bars text-white"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="sm:hidden bg-white" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <a href="#"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Balance</a>
+            <a href="#"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Categories</a>
+            <a href="#"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Reports</a>
+        </div>
+    </div>
+</nav>
+
+<script src="./js/main.js"></script>
 
 </html>
