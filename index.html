@@ -72,6 +72,128 @@
     </div>
 </nav>
 
+<!-- -------------------------- FRONT PAGE  -------------------------- -->
+
+<main class="w-screen">
+    <!-- -------------------------- BALANCE  -------------------------- -->
+    <section class="balance-container flex bg-gray-100 text-gray-700">
+        <div class="balance-filters-container w-4/12">
+            <div id="balance" class="bg-white rounded-md shadow-lg p-6 ml-16 mt-16">
+                <h2 class="font-semibold text-3xl">
+                    Balance
+                </h2>
+                <div class="mt-10">
+                    <div class="flex place-content-between">
+                        <p class="text-xl">
+                            Earnings
+                        </p>
+                        <span class="text-green-500">
+                            +$0
+                        </span>
+                    </div>
+                    <div class="flex place-content-between mt-5">
+                        <p class="text-xl">
+                            Expenses
+                        </p>
+                        <span class="text-red-500">
+                            -$0
+                        </span>
+                    </div>
+                    <div class="flex place-content-between mt-5">
+                        <p class="text-2xl">
+                            Total
+                        </p>
+                        <span class="font-bold">
+                            $0
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="filters" class=" bg-white rounded-md shadow-lg p-6 ml-16 mt-6">
+                <div class="flex place-content-between">
+                    <h3 class="font-semibold text-2xl">
+                        Filters
+                    </h3>
+                    <span class="text-blue-600">
+                        Hide filters
+                    </span>
+                </div>
+                <div id="filters" class="mt-5">
+                    <div class="field">
+                        <label class="label text-lg font-semibold" for="filter-btype">Balance Type</label>
+                        <div class="control mt-2">
+                            <div class="">
+                                <select id="filter-btype"
+                                    class="select border border-solid border-stone-200 rounded-md p-2">
+                                    <option value="all">All</option>
+                                    <option value="expense">Expense</option>
+                                    <option value="earning">Earning</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-3">
+                        <label class="label text-lg font-semibold" for="filter-categories">Categories</label>
+                        <div class="control mt-2">
+                            <div class="">
+                                <select
+                                    class="filter-categories select border border-solid border-stone-200 rounded-md p-2"
+                                    id="filter-categories">
+                                    <option value="all">All</option>
+                                    <option value="food">Food</option>
+                                    <option value="utilities">Utilities</option>
+                                    <option value="outings">Outings</option>
+                                    <option value="education">Education</option>
+                                    <option value="transportation">Tranportation</option>
+                                    <option value="job">Job</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-3">
+                        <label class="label text-lg font-semibold" for="filter-date">From</label>
+                        <div class="control mt-2">
+                            <div class="">
+                                <input class="input border border-solid border-stone-200 rounded-md p-2" type="date"
+                                    name="" id="filter-date" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-3">
+                        <label class="label text-lg font-semibold" for="filtro-orden">Sort by</label>
+                        <div class="control mt-2">
+                            <div class="">
+                                <select id="filter-sort"
+                                    class="select border border-solid border-stone-200 rounded-md p-2">
+                                    <option value="most-recent">Most Recent</option>
+                                    <option value="less-recent">Less Recent</option>
+                                    <option value="high-price">Price: High to Low</option>
+                                    <option value="low-price">Price: Low to High</option>
+                                    <option value="a/z">A/Z</option>
+                                    <option value="z/a">Z/A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+        <div id="operations" class="operations-container container">
+            <h3 class="font-bold text-3xl">
+                Operations
+            </h3>
+
+        </div>
+
+    </section>
+
+
+
+</main>
+
 <script src="./js/main.js"></script>
 
 </html>
