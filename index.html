@@ -109,13 +109,16 @@
                     </div>
                 </div>
             </div>
-            <div id="filters" class=" bg-white rounded-md shadow-lg p-6 ml-16 mt-6">
+            <div class=" bg-white rounded-md shadow-lg p-6 ml-16 mt-6">
                 <div class="flex place-content-between">
                     <h3 class="font-semibold text-2xl">
                         Filters
                     </h3>
-                    <span class="text-blue-600">
+                    <span class="accordion hide-filters text-blue-600">
                         Hide filters
+                    </span>
+                    <span class="accordion show-filters hidden text-blue-600">
+                        Show filters
                     </span>
                 </div>
                 <div id="filters" class="mt-5">
@@ -186,7 +189,7 @@
                 <h3 class="font-semibold text-2xl">
                     Operations
                 </h3>
-                <div>
+                <div class="new-operation-btn">
                     <span class="border rounded-md text-white bg-teal-300 hover:bg-teal-500 p-3">
                         + New Operation
                     </span>
@@ -209,8 +212,8 @@
         </div>
     </section>
     <!-- -------------------------- NEW OPERATION  -------------------------- -->
-    <section class="mx-52 hidden">
-        <div class="container mx-auto bg-white mt-16 p-6">
+    <section id="new-operation" class="mx-52 hidden">
+        <div class="container mx-auto bg-white border rounded-md shadow-lg p-6">
             <h2 class="font-bold text-4xl">
                 New Operation
             </h2>
