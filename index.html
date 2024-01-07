@@ -178,8 +178,8 @@
                 </div>
             </div>
         </div>
-
         </div>
+        <!-- -------------------------- OPERATIONS -------------------------- -->
         <div id="operations"
             class="operations-container container bg-white h-1/2 rounded-md shadow-lg p-6 ml-6 mr-16 pb-40">
             <div class="flex place-content-between">
@@ -206,6 +206,75 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- -------------------------- NEW OPERATION  -------------------------- -->
+    <section class="mx-52 hidden">
+        <div class="container mx-auto bg-white mt-16 p-6">
+            <h2 class="font-bold text-4xl">
+                New Operation
+            </h2>
+            <form>
+                <div class="field mt-10">
+                    <label class="label font-semibold" for="description-input">Description</label>
+                    <div class="control">
+                        <div class="border border-solid border-stone-200 rounded-md p-2">
+                            <input class="input" type="text" name="" id="description-input" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field mt-5">
+                    <label class="label font-semibold" for="amount-input">Amount</label>
+                    <div class="control mt-2">
+                        <div class="control">
+                            <div class="border border-solid border-stone-200 rounded-md p-2">
+                                <input class="input" type="number" name="" id="amount-input" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field mt-5">
+                    <label class="label font-semibold" for="type-select-operation">Balance Type</label>
+                    <div class="control mt-2">
+                        <div class="select">
+                            <select id="type-select-operation"
+                                class="select border border-solid border-stone-200 rounded-md p-2">
+                                <option value="expense">Expenses</option>
+                                <option value="earning">Earnings</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field mt-5">
+                    <label class="label font-semibold" for="categories-select">Categories</label>
+                    <div class="control mt-2">
+                        <div class="select">
+                            <select class="categorias-select select border border-solid border-stone-200 rounded-md p-2"
+                                id="categories-select">
+                                <option>Utilities</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field mt-5">
+                    <label class="label font-semibold" for="date-input">Date</label>
+                    <div class="control mt-2">
+                        <div class="input border border-solid border-stone-200 rounded-md p-2">
+                            <input class="input" type="date" name="" id="date-input" />
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons flex place-content-end mt-10">
+                    <button class="bg-gray-200 hover:bg-gray-100 p-2 border rounded-md w-32 mr-2"
+                        id="cancel-add-operation-btn">
+                        Cancel
+                    </button>
+                    <button class="text-white bg-green-500 hover:bg-green-600 p-2 border rounded-md w-32"
+                        id="cancel-add-operation-btn">
+                        Add
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 </main>
