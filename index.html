@@ -14,6 +14,9 @@
 
     <!-- TAILWIND CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./assets/finance-chart.png" type="image/x-icon">
 </head>
 
 <body>
@@ -37,7 +40,8 @@
                 <div class="hidden sm:ml-6 sm:block ">
                     <div class="flex space-x-4">
 
-                        <a href="#" class="text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
+                        <a href="#" id="balance-nav"
+                            class="text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
                             aria-current="page">
                             <i class="fa-solid fa-chart-line"></i>
                             Balance
@@ -209,6 +213,43 @@
                     </p>
                 </div>
             </div>
+            <div class="table-operations hidden">
+                <table class="table table-auto">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Categorie</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!-- <tbody>
+                        <tr>
+                            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                            <td>Malcolm Lockyer</td>
+                            <td>1961</td>
+                            <td>1961</td>
+                            <td>1961</td>
+                        </tr>
+                        <tr>
+                            <td>Witchy Woman</td>
+                            <td>The Eagles</td>
+                            <td>1972</td>
+                            <td>1961</td>
+                            <td>1961</td>
+                        </tr>
+                        <tr>
+                            <td>Shining Star</td>
+                            <td>Earth, Wind, and Fire</td>
+                            <td>1975</td>
+                            <td>1961</td>
+                            <td>1961</td>
+                        </tr>
+                    </tbody> -->
+                </table>
+                <!-- Hacer la tabla -->
+            </div>
         </div>
     </section>
     <!-- -------------------------- NEW OPERATION  -------------------------- -->
@@ -217,9 +258,11 @@
             <h2 class="font-bold text-4xl">
                 New Operation
             </h2>
-            <form>
+            <form class="form">
                 <div class="field mt-10">
-                    <label class="label font-semibold" for="description-input">Description</label>
+                    <label class="label label-description font-semibold" for="description-input">Description</label>
+                    <label class="label label-edit font-semibold hidden" for="description-input">Edit
+                        Description</label>
                     <div class="control">
                         <div class="border border-solid border-stone-200 rounded-md p-2">
                             <input class="input" type="text" name="" id="description-input" />
@@ -269,15 +312,23 @@
                 </div>
                 <div class="buttons flex place-content-end mt-10">
                     <button class="bg-gray-200 hover:bg-gray-100 p-2 border rounded-md w-32 mr-2"
-                        id="cancel-add-operation-btn">
+                        id="cancel-operation-btn">
                         Cancel
                     </button>
                     <button class="text-white bg-green-500 hover:bg-green-600 p-2 border rounded-md w-32"
-                        id="cancel-add-operation-btn">
+                        id="add-operation-btn">
                         Add
+                    </button>
+                    <button class="text-white bg-green-500 hover:bg-green-600 p-2 border rounded-md w-32 hidden"
+                        id="edit-operation-btn">
+                        Edit
                     </button>
                 </div>
             </form>
+
+            <div id="operation-content" class="operation-content">
+
+            </div>
         </div>
     </section>
 </main>
