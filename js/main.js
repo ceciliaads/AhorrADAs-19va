@@ -34,14 +34,14 @@ const renderOperations = (operations) => {
         showElement([".table-operations"])
         for (const operation of operations) {
             $("#table").innerHTML += `
-            <tr> 
+            <tr class="table-auto"> 
                 <td>${operation.description}</td>
                 <td>${operation.categorie}</td>
                 <td>${operation.date}</td>
                 <td>${operation.amount}</td>
                 <td>
-                    <button class="btn text-blue-400" onclick="showFormEdit('${operation.id}')"> Edit </button>
-                    <button type="button" class="btn text-blue-400" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
+                    <button class="btn text-blue-500" onclick="showFormEdit('${operation.id}')"> Edit </button>
+                    <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
                 </td>
             </tr>
             
@@ -50,6 +50,7 @@ const renderOperations = (operations) => {
     }
     else {
         showElement([".no-results-container"])
+        hideElement([".table-operations"])
     }
 
 }
@@ -139,6 +140,12 @@ const initializeApp = () => {
         editOperation()
         window.location.reload()
     })
+
+    $("#filter-categories").addEventListener("input", () => {
+        const categoriesId = e.target.value
+        const currentData = getData("operations")
+        const filteredOperations = currentData.filter(operation => operation.id === categorieId)
+    })
 }
 
 window.addEventListener("load", initializeApp)
@@ -150,18 +157,18 @@ window.addEventListener("load", initializeApp)
 // // MIO
 // $("#hamburger-menu").classList.add("hidden")
 
-// // FILTER SECTION ACCORDION
-// // $(".hide-filters").addEventListener("click", () => {
-// //     $(".hide-filters").classList.toggle("hidden")
-// //     $(".show-filters").classList.toggle("hidden")
-// //     $("#filters").classList.toggle("hidden")
-// // })
+// FILTER SECTION ACCORDION
+$(".hide-filters").addEventListener("click", () => {
+    $(".hide-filters").classList.toggle("hidden")
+    $(".show-filters").classList.toggle("hidden")
+    $("#filters").classList.toggle("hidden")
+})
 
-// // $(".show-filters").addEventListener("click", () => {
-// //     $(".hide-filters").classList.toggle("hidden")
-// //     $(".show-filters").classList.toggle("hidden")
-// //     $("#filters").classList.toggle("hidden")
-// // })
+$(".show-filters").addEventListener("click", () => {
+    $(".hide-filters").classList.toggle("hidden")
+    $(".show-filters").classList.toggle("hidden")
+    $("#filters").classList.toggle("hidden")
+})
 
 // // NEW OPERATION
 

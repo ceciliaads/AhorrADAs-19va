@@ -78,7 +78,7 @@
 
 <!-- -------------------------- FRONT PAGE  -------------------------- -->
 
-<main class="w-screen mx-auto bg-gray-100 p-16">
+<main class="w-screen h-screen mx-auto bg-gray-100 p-16">
     <!-- -------------------------- BALANCE  -------------------------- -->
     <section class="balance-container flex text-gray-700">
         <div class="balance-filters-container w-6/12">
@@ -174,8 +174,8 @@
                                     class="select border border-solid border-stone-200 rounded-md p-2">
                                     <option value="most-recent">Most Recent</option>
                                     <option value="less-recent">Less Recent</option>
-                                    <option value="high-price">Price: High to Low</option>
-                                    <option value="low-price">Price: Low to High</option>
+                                    <option value="high-price">$: High to Low</option>
+                                    <option value="low-price">$: Low to High</option>
                                     <option value="a/z">A/Z</option>
                                     <option value="z/a">Z/A</option>
                                 </select>
@@ -213,39 +213,19 @@
                     </p>
                 </div>
             </div>
-            <div class="table-operations hidden">
-                <table id="table" class="table table-auto">
+            <div class="container table-operations hidden mt-10 w-100 text-lg">
+                <table class="table table-fixed">
                     <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Categorie</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Action</th>
+                            <th class="pr-20">Description</th>
+                            <th class="pr-20">Categorie</th>
+                            <th class="pr-20">Date</th>
+                            <th class="pr-20">Amount</th>
+                            <th class="pr-20">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- <tr>
-                            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                            <td>Malcolm Lockyer</td>
-                            <td>1961</td>
-                            <td>1961</td>
-                            <td>1961</td>
-                        </tr>
-                        <tr>
-                            <td>Witchy Woman</td>
-                            <td>The Eagles</td>
-                            <td>1972</td>
-                            <td>1961</td>
-                            <td>1961</td>
-                        </tr>
-                        <tr>
-                            <td>Shining Star</td>
-                            <td>Earth, Wind, and Fire</td>
-                            <td>1975</td>
-                            <td>1961</td>
-                            <td>1961</td>
-                        </tr> -->
+                    <tbody id="table">
+
                     </tbody>
                 </table>
 
