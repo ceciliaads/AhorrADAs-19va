@@ -38,7 +38,7 @@ const renderOperations = (operations) => {
             <td>${operation.amount}</td>
             <td>
                 <button class="btn text-blue-400" onclick="showFormEdit('${operation.id}')"> Edit </button>
-                <button type="button" class="btn text-blue-400"> Delete</button>
+                <button type="button" class="btn text-blue-400" onclick="openModalDelete('${operation.id}')"> Delete</button>
             </td>
         </tr>
         
@@ -70,10 +70,22 @@ const showFormEdit = (operationId) => {
     $("#date-input").value = operationSelected.date
     $("#amount-input").value = operationSelected.amount
     // add type of balance
-
-    
 }
 
+const openModalDelete = (operationId) => {
+    $("#delete-btn").setAttribute("data-id", operationId)
+    $("#delete-modal").classList.remove("hidden")
+    $("#delete-btn").addEventListener("click", () => {
+        const operationId = $("#delete-btn").getAttribute("data-id")
+        deleteOperation(operationId)
+        window.location.reload()
+    })
+}
+
+const deleteOperation = (operationId) => {
+    const currentData = getData("operations").filter(operation => operation.id != operationId)
+    setData("operations", currentData)
+}
 
 //-- -------------------------- EVENTS -------------------------- -->
 
@@ -94,6 +106,7 @@ const initializeApp = () => {
         $(".no-results-container").classList.add("hidden")
         $(".balance-container").classList.remove("hidden")
         $(".table-operations").classList.remove("hidden")
+        $(".no-results-container").classList.add("hidden")
         $("#new-operation").classList.add("hidden")
     })
 
