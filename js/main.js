@@ -119,6 +119,50 @@ const editOperation = () => {
     setData("operations", currentData)
 }
 
+//-- -------------------------- VALIDATIONS -------------------------- -->
+
+const validateForm = (field) => {
+    const description = $("#description-input").value.trim()
+    const amount = $("#amount-input").valueAsNumber
+    const validationPassed = description !== "" && amount
+
+    switch (field) {
+        case "description":
+            if (description === "") {
+                showElement([".description-error"])
+                $("#description-input").classList.add("border-red-500")
+            } else {
+                hideElement([".description-error"])
+                $("#description-input").classList.remove("border-red-500")
+            }
+            break
+        case "amount":
+            if (!amount) {
+                showElement([".amount-error"])
+                $("#amount-input").classList.add("border-red-500")
+            } else {
+                hideElement([".amount-error"])
+                $("#amount-input").classList.remove("border-red-500")
+            }
+            break
+        default:
+            console.log("Error")
+    }
+
+    if (validationPassed) {
+        $("#add-operation-btn").removeAttribute("disabled")
+        $("#add-operation-btn").classList.add("hover:bg-green-600")
+        $("#edit-operation-btn").removeAttribute("disabled")
+        $("#edit-operation-btn").classList.add("hover:bg-green-600")
+    } else {
+        $("#add-operation-btn").setAttribute("disabled", true)
+        $("#add-operation-btn").classList.remove("hover:bg-green-600")
+        $("#edit-operation-btn").setAttribute("disabled", true)
+        $("#edit-operation-btn").classList.remove("hover:bg-green-600")
+    }
+}
+
+
 //-- -------------------------- EVENTS -------------------------- -->
 
 const initializeApp = () => {
@@ -146,6 +190,9 @@ const initializeApp = () => {
         const currentData = getData("operations")
         const filteredOperations = currentData.filter(operation => operation.id === categorieId)
     })
+
+    $("#description-input").addEventListener("blur", () => validateForm("description"))
+    $("#amount-input").addEventListener("blur", () => validateForm("amount"))
 }
 
 window.addEventListener("load", initializeApp)
