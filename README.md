@@ -6,7 +6,7 @@
 
 -   The user will have the option to add, edit & delete operations. As well as add, edit & delete categories.
 -   The app will sum and subtract accordingly to the information provided, giving the user a report of their spendings & earnings.
--   The user will be able to filter through Type of Spendings, Categories, Date and Sort By: most recent, less recent, $: low to high, $: high to low, and alphabetically.
+-   The user will be able to filter through Type of Spendings, Categories, Date and Sort By: most recent, less recent, $ : low to high, $ : high to low, and alphabetically.
 
 ### Technologies used on this project:
 
