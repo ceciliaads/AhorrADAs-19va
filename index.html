@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div id="hamburger-menu">
+            <div id="hamburger-menu" class="hidden">
                 <i class="fa-solid fa-bars text-white"></i>
             </div>
         </div>
@@ -193,14 +193,14 @@
                 <h3 class="font-semibold text-2xl">
                     Operations
                 </h3>
-                <div class="new-operation-btn">
+                <div id="new-operation-btn" class="new-operation-btn">
                     <span class="border rounded-md text-white bg-teal-300 hover:bg-teal-500 p-3">
                         + New Operation
                     </span>
                 </div>
             </div>
 
-            <div class="flex flex-col">
+            <div class="no-results-container flex flex-col">
                 <div class="mx-auto size-2/4 mt-16">
                     <img src="./assets/ahorradas_undraw_investment.svg" alt="investment chart" />
                 </div>
@@ -214,7 +214,7 @@
                 </div>
             </div>
             <div class="table-operations hidden">
-                <table class="table table-auto">
+                <table id="table" class="table table-auto">
                     <thead>
                         <tr>
                             <th>Description</th>
@@ -224,8 +224,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tbody>
-                        <tr>
+                    <tbody>
+                        <!-- <tr>
                             <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
                             <td>Malcolm Lockyer</td>
                             <td>1961</td>
@@ -245,8 +245,8 @@
                             <td>1975</td>
                             <td>1961</td>
                             <td>1961</td>
-                        </tr>
-                    </tbody> -->
+                        </tr> -->
+                    </tbody>
                 </table>
                 <!-- Hacer la tabla -->
             </div>
@@ -255,14 +255,15 @@
     <!-- -------------------------- NEW OPERATION  -------------------------- -->
     <section id="new-operation" class="mx-52 hidden">
         <div class="container mx-auto bg-white border rounded-md shadow-lg p-6">
-            <h2 class="font-bold text-4xl">
+            <h2 id="new-operation-title" class="font-bold text-4xl">
                 New Operation
+            </h2>
+            <h2 id="edit-operation-title" class="font-bold text-4xl hidden">
+                Edit operation
             </h2>
             <form class="form">
                 <div class="field mt-10">
                     <label class="label label-description font-semibold" for="description-input">Description</label>
-                    <label class="label label-edit font-semibold hidden" for="description-input">Edit
-                        Description</label>
                     <div class="control">
                         <div class="border border-solid border-stone-200 rounded-md p-2">
                             <input class="input" type="text" name="" id="description-input" />
