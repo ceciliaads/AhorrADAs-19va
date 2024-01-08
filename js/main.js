@@ -29,29 +29,37 @@ const operationsPlaceHolder = []
 //-- -------------------------- RENDERS -------------------------- -->
 
 const renderOperations = (operations) => {
-    for (const operation of operations) {
-        $("#table").innerHTML += `
-        <tr> 
-            <td>${operation.description}</td>
-            <td>${operation.categorie}</td>
-            <td>${operation.date}</td>
-            <td>${operation.amount}</td>
-            <td>
-                <button class="btn text-blue-400" onclick="showFormEdit('${operation.id}')"> Edit </button>
-                <button type="button" class="btn text-blue-400" onclick="openModalDelete('${operation.id}')"> Delete</button>
-            </td>
-        </tr>
-        
-        `
+    if (operations.length) {
+        hideElement([".no-results-container"])
+        showElement([".table-operations"])
+        for (const operation of operations) {
+            $("#table").innerHTML += `
+            <tr> 
+                <td>${operation.description}</td>
+                <td>${operation.categorie}</td>
+                <td>${operation.date}</td>
+                <td>${operation.amount}</td>
+                <td>
+                    <button class="btn text-blue-400" onclick="showFormEdit('${operation.id}')"> Edit </button>
+                    <button type="button" class="btn text-blue-400" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
+                </td>
+            </tr>
+            
+            `
+        }
     }
+    else {
+        showElement([".no-results-container"])
+    }
+
 }
 console.log(operationsPlaceHolder)
 
 // renderOperations(operationsPlaceHolder)
 
-const saveNewOperation = () => {
+const saveNewOperation = (operationId) => {
     return {
-        id: randomId(),
+        id: operationId ? operationId : randomId(),
         description: $("#description-input").value,
         categorie: $("#categories-select").value,
         date: $("#date-input").value,
@@ -72,9 +80,10 @@ const showFormEdit = (operationId) => {
     // add type of balance
 }
 
-const openModalDelete = (operationId) => {
+const openModalDelete = (operationId, operationCategorie) => {
     $("#delete-btn").setAttribute("data-id", operationId)
     $("#delete-modal").classList.remove("hidden")
+    $(".operation-name").innerText = `${operationCategorie}`
     $("#delete-btn").addEventListener("click", () => {
         const operationId = $("#delete-btn").getAttribute("data-id")
         deleteOperation(operationId)
@@ -84,6 +93,28 @@ const openModalDelete = (operationId) => {
 
 const deleteOperation = (operationId) => {
     const currentData = getData("operations").filter(operation => operation.id != operationId)
+    setData("operations", currentData)
+}
+
+const addOperation = () => {
+    const currentData = getData("operations")
+    currentData.push(saveNewOperation())
+    setData("operations", currentData)
+    $(".no-results-container").classList.add("hidden")
+    $(".balance-container").classList.remove("hidden")
+    $(".table-operations").classList.remove("hidden")
+    $(".no-results-container").classList.add("hidden")
+    $("#new-operation").classList.add("hidden")
+}
+
+const editOperation = () => {
+    const operationId = $("#edit-operation-btn").getAttribute("data-id")
+    const currentData = getData("operations").map(operation => {
+        if(operation.id == operationId) {
+            return saveNewOperation()
+        }
+        return operation
+    })
     setData("operations", currentData)
 }
 
@@ -100,26 +131,12 @@ const initializeApp = () => {
 
     $("#add-operation-btn").addEventListener("click", (e) => {
         e.preventDefault()
-        const currentData = getData("operations")
-        currentData.push(saveNewOperation())
-        setData("operations", currentData)
-        $(".no-results-container").classList.add("hidden")
-        $(".balance-container").classList.remove("hidden")
-        $(".table-operations").classList.remove("hidden")
-        $(".no-results-container").classList.add("hidden")
-        $("#new-operation").classList.add("hidden")
+        addOperation()
     })
 
     $("#edit-operation-btn").addEventListener("click", (e) => {
         e.preventDefault()
-        const operationId = $("#edit-operation-btn").getAttribute("data-id")
-        const currentData = getData("operations").map(operation => {
-            if(operation.id == operationId) {
-                return saveNewOperation()
-            }
-            return operation
-        })
-        setData("operations", currentData)
+        editOperation()
         window.location.reload()
     })
 }
