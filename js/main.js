@@ -73,7 +73,7 @@ console.log(saveNewOperation())
 
 const showFormEdit = (operationId) => {
     showElement(["#new-operation", "#edit-operation-btn", "#edit-operation-title"])
-    hideElement([".table-operations", ".balance-container", "#add-operation-btn", "#new-operation-title"])
+    hideElement([".table-operations", ".balance-container", "#add-operation-btn", "#new-operation-title", "#cancel-operation-btn"])
     $("#edit-operation-btn").setAttribute("data-id", operationId)
     const operationSelected = getData("operations").find(operation => operation.id === operationId)
     $("#description-input").value = operationSelected.description
@@ -85,11 +85,16 @@ const showFormEdit = (operationId) => {
 
 const openModalDelete = (operationId, operationCategorie) => {
     $("#delete-btn").setAttribute("data-id", operationId)
-    $("#delete-modal").classList.remove("hidden")
+    showElement(["#delete-modal"])
     $(".operation-name").innerText = `${operationCategorie}`
     $("#delete-btn").addEventListener("click", () => {
         const operationId = $("#delete-btn").getAttribute("data-id")
         deleteOperation(operationId)
+        window.location.reload()
+    })
+    $("#cancel-dltModal-btn").addEventListener("click", () => {
+        hideElement(["#delete-modal"])
+        showElement([".balance-container", ".table-operations"])
         window.location.reload()
     })
 }
@@ -103,11 +108,8 @@ const addOperation = () => {
     const currentData = getData("operations")
     currentData.push(saveNewOperation())
     setData("operations", currentData)
-    $(".no-results-container").classList.add("hidden")
-    $(".balance-container").classList.remove("hidden")
-    $(".table-operations").classList.remove("hidden")
-    $(".no-results-container").classList.add("hidden")
-    $("#new-operation").classList.add("hidden")
+    hideElement([".no-results-container", ".no-results-container", "#new-operation"])
+    showElement([".balance-container", ".table-operations"])
 }
 
 const editOperation = () => {
@@ -151,24 +153,6 @@ const calculateBalance = () => {
 
     return netBalance;
 };
-
-// const calculateBalanceTotal = () => {
-//     const currentData = getData ("operations")
-//     let acc = 0
-//     for (const operation of currentData) {
-//         acc += operation.amount
-//     }
-//     return acc
-// }
-
-// const calculateBalanceExpenses = () => {
-//     const currentData = getData ("operations")
-//     let acc = 0
-//     for (const operation of currentData) {
-//         acc -= operation.amount
-//     }
-//     return acc
-// }
 
 //-- -------------------------- VALIDATIONS -------------------------- -->
 
@@ -221,8 +205,8 @@ const initializeApp = () => {
     renderOperations(allOperations)
     calculateBalance()
     $("#new-operation-btn").addEventListener("click", () => {
-        $("#new-operation").classList.remove("hidden")
-        $(".balance-container").classList.add("hidden")
+        showElement(["#new-operation"])
+        hideElement([".balance-container"])
     })
 
     $("#add-operation-btn").addEventListener("click", (e) => {
@@ -237,6 +221,24 @@ const initializeApp = () => {
         window.location.reload()
     })
 
+    $("#cancel-operation-btn").addEventListener("click", (e) => {
+    e.preventDefault()
+    showElement([".balance-container"])
+    hideElement(["#new-operation"])
+})
+
+    $(".hide-filters").addEventListener("click", () => {
+        $(".hide-filters").classList.toggle("hidden")
+        $(".show-filters").classList.toggle("hidden")
+        $("#filters").classList.toggle("hidden")
+    })
+    
+    $(".show-filters").addEventListener("click", () => {
+        $(".hide-filters").classList.toggle("hidden")
+        $(".show-filters").classList.toggle("hidden")
+        $("#filters").classList.toggle("hidden")
+    })
+
     $("#filter-categories").addEventListener("input", () => {
         const categoriesId = e.target.value
         const currentData = getData("operations")
@@ -249,32 +251,6 @@ const initializeApp = () => {
 
 window.addEventListener("load", initializeApp)
 
-
-
-
-
-// // MIO
-// $("#hamburger-menu").classList.add("hidden")
-
-// FILTER SECTION ACCORDION
-$(".hide-filters").addEventListener("click", () => {
-    $(".hide-filters").classList.toggle("hidden")
-    $(".show-filters").classList.toggle("hidden")
-    $("#filters").classList.toggle("hidden")
-})
-
-$(".show-filters").addEventListener("click", () => {
-    $(".hide-filters").classList.toggle("hidden")
-    $(".show-filters").classList.toggle("hidden")
-    $("#filters").classList.toggle("hidden")
-})
-
-// // NEW OPERATION
-
-// $(".new-operation-btn").addEventListener("click", () => {
-//     $(".balance-container").classList.add("hidden")
-//     $("#new-operation").classList.remove("hidden")
-// })
 
 // // CANCEL BUTTON NEW OPERATION
 
