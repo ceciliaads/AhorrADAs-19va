@@ -62,14 +62,14 @@ const renderOperations = (operations) => {
         for (const operation of operations) {
             const categorieSelected = getData("categories").find(categorie => categorie.id === operation.categorie)
             $("#table").innerHTML += `
-            <tr class="flex place-content-between mb-3 text-sm"> 
+            <tr class="mb-3 text-sm grid grid-cols-5 gap-2"> 
                 <td class="font-semibold">${operation.description}</td>
-                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center ">${categorieSelected.name}</td>
+                <td class="bg-green-100 text-green-400 rounded-md text-center ">${categorieSelected.name}</td>
                 <td class="">${operation.date}</td>
-                <td class="amount-operation text-left font-semibold">${operation.amount}</td>
+                <td class="amount-operation text-right font-semibold">${operation.amount}</td>
                 <td>
-                    <button class="btn text-blue-500" onclick="showFormEdit('${operation.id}')"> Edit </button>
-                    <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.description} ')"> Delete</button>
+                    <button class="btn text-blue-500 text-right" onclick="showFormEdit('${operation.id}')"> Edit </button>
+                    <button type="button" class="btn text-blue-500 text-right" onclick="openModalDelete('${operation.id}','${operation.description} ')"> Delete</button>
                 </td>
             </tr>
             
