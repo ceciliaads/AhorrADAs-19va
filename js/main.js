@@ -378,6 +378,13 @@ const initializeApp = () => {
         renderOperations(filteredOperations)
     })
 
+    $("#filter-date").addEventListener("input", (e) => {
+        const date = e.target.value
+        const currentData = getData("operations")
+        const filteredOperations = currentData.filter(operation => operation.date >= date)
+        renderOperations(filteredOperations)
+    })
+
     $("#description-input").addEventListener("blur", () => validateForm("description"))
     $("#amount-input").addEventListener("blur", () => validateForm("amount"))
 
