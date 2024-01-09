@@ -123,21 +123,34 @@ const editOperation = () => {
 
 //-- -------------------------- BALANCE CALCULATIONS -------------------------- -->
 
+
 const calculateBalance = () => {
-    const currentData = getData ("operations")
-    let acc = 0
+    const currentData = getData("operations");
+    let earningsTotal = 0;
+    let expensesTotal = 0;
+
     for (const operation of currentData) {
         if (operation.type === "earning") {
-            acc += operation.amount
-            $(".earnings-sum").innerHTML = acc
+            earningsTotal += operation.amount;
         } else {
-            acc = 0
-            acc -= operation.amount
-            $(".expenses-sub").innerHTML = acc
+            expensesTotal += operation.amount;
         }
     }
-    return acc 
-}
+
+    $(".earnings-sum").innerHTML = earningsTotal;
+    $(".expenses-sub").innerHTML = expensesTotal;
+
+    const netBalance = earningsTotal - expensesTotal;
+    $(".totalOnWallet").innerHTML = netBalance;
+
+    if (netBalance < 0) {
+        $(".total-on-wallet").classList.add("text-red-500")
+    } else if (netBalance > 0){
+        $(".total-on-wallet").classList.add("text-green-500")
+    }
+
+    return netBalance;
+};
 
 // const calculateBalanceTotal = () => {
 //     const currentData = getData ("operations")
