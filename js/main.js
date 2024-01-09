@@ -92,10 +92,10 @@ const renderCategoriesTable = (categories) => {
             </div>
             <div class="">
                 <button onclick="bttnEdit('${id}')" class="bttnEdit bg-green-500 hover:bg-green-700 text-white font-bold m-1 py-1 px-1 rounded">
-                    Editar
+                    Edit
                 </button>
                 <button onclick="bttnremove('${id}')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded">
-                    Eliminar
+                    Delete
                 </button>
             </div>
         </li>`
