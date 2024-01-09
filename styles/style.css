@@ -3,3 +3,21 @@
     width: 100%;
 }
 
+
+
+/* -------------------------------------
+-------------------- RESPONSIVE -------------------- */
+
+@media (max-width:1000px ) {
+    body {
+        overflow: scroll;
+    }
+    .balance-container {
+        display: block;
+    }
+
+    .operations-container {
+        margin-top: 25px;
+    }
+}
+
