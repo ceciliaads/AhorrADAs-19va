@@ -91,25 +91,28 @@
                         <p class="text-xl">
                             Earnings
                         </p>
-                        <span class="text-green-500">
-                            +$0
-                        </span>
+
+                        <p class="text-green-500">
+                            $+<span class="earnings-sum">0</span>
+                        </p>
+
                     </div>
                     <div class="flex place-content-between mt-5">
                         <p class="text-xl">
                             Expenses
                         </p>
-                        <span class="text-red-500">
-                            -$0
-                        </span>
+                        <p class="text-red-500">
+                            $<span class="expenses-sub">0</span>
+                        </p>
                     </div>
                     <div class="flex place-content-between mt-5">
                         <p class="text-2xl">
                             Total
                         </p>
-                        <span class="font-bold">
-                            $0
-                        </span>
+                        <p class="font-bold">
+                            $<span class="totalOnWallet">0</span>
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -312,8 +315,8 @@
                         <div class="select">
                             <select id="type-select-operation"
                                 class="select border border-solid border-stone-200 rounded-md p-2">
-                                <option value="expense">Expenses</option>
-                                <option value="earning">Earnings</option>
+                                <option id="expenses-option" value="expense" selected>Expenses</option>
+                                <option id="earnings-option" value="earning">Earnings</option>
                             </select>
                         </div>
                     </div>
@@ -324,8 +327,7 @@
                         <div class="select">
                             <select class="categorias-select select border border-solid border-stone-200 rounded-md p-2"
                                 id="categories-select">
-                                <option value="all">All</option>
-                                <option value="food">Food</option>
+                                <option value="food" selected>Food</option>
                                 <option value="utilities">Utilities</option>
                                 <option value="outings">Outings</option>
                                 <option value="education">Education</option>

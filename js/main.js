@@ -38,7 +38,7 @@ const renderOperations = (operations) => {
                 <td>${operation.description}</td>
                 <td>${operation.categorie}</td>
                 <td>${operation.date}</td>
-                <td>${operation.amount}</td>
+                <td class="amount-table">${operation.amount}</td>
                 <td>
                     <button class="btn text-blue-500" onclick="showFormEdit('${operation.id}')"> Edit </button>
                     <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
@@ -64,9 +64,11 @@ const saveNewOperation = (operationId) => {
         description: $("#description-input").value,
         categorie: $("#categories-select").value,
         date: $("#date-input").value,
-        amount: $("#amount-input").value,
+        type:$("#type-select-operation").value,
+        amount: $("#amount-input").valueAsNumber
     }
 }
+
 console.log(saveNewOperation())
 
 const showFormEdit = (operationId) => {
@@ -119,6 +121,42 @@ const editOperation = () => {
     setData("operations", currentData)
 }
 
+//-- -------------------------- BALANCE CALCULATIONS -------------------------- -->
+
+const calculateBalance = () => {
+    const currentData = getData ("operations")
+    let acc = 0
+    for (const operation of currentData) {
+        if (operation.type === "earning") {
+            acc += operation.amount
+            $(".earnings-sum").innerHTML = acc
+        } else {
+            acc = 0
+            acc -= operation.amount
+            $(".expenses-sub").innerHTML = acc
+        }
+    }
+    return acc 
+}
+
+// const calculateBalanceTotal = () => {
+//     const currentData = getData ("operations")
+//     let acc = 0
+//     for (const operation of currentData) {
+//         acc += operation.amount
+//     }
+//     return acc
+// }
+
+// const calculateBalanceExpenses = () => {
+//     const currentData = getData ("operations")
+//     let acc = 0
+//     for (const operation of currentData) {
+//         acc -= operation.amount
+//     }
+//     return acc
+// }
+
 //-- -------------------------- VALIDATIONS -------------------------- -->
 
 const validateForm = (field) => {
@@ -168,7 +206,7 @@ const validateForm = (field) => {
 const initializeApp = () => {
     setData("operations", allOperations)
     renderOperations(allOperations)
-
+    calculateBalance()
     $("#new-operation-btn").addEventListener("click", () => {
         $("#new-operation").classList.remove("hidden")
         $(".balance-container").classList.add("hidden")
@@ -177,6 +215,7 @@ const initializeApp = () => {
     $("#add-operation-btn").addEventListener("click", (e) => {
         e.preventDefault()
         addOperation()
+        window.location.reload()
     })
 
     $("#edit-operation-btn").addEventListener("click", (e) => {
