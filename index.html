@@ -144,13 +144,7 @@
                                     <select
                                         class="filter-categories select border border-solid border-stone-200 rounded-md p-2"
                                         id="filter-categories">
-                                        <option value="all">All</option>
-                                        <option value="food">Food</option>
-                                        <option value="utilities">Utilities</option>
-                                        <option value="outings">Outings</option>
-                                        <option value="education">Education</option>
-                                        <option value="transportation">Tranportation</option>
-                                        <option value="job">Job</option>
+                                        <!-- Options will be inserted from Local Storage -->
                                     </select>
                                 </div>
                             </div>
@@ -324,12 +318,7 @@
                                 <select
                                     class="categorias-select select border border-solid border-stone-200 rounded-md p-2"
                                     id="categories-select">
-                                    <option value="food" selected>Food</option>
-                                    <option value="utilities">Utilities</option>
-                                    <option value="outings">Outings</option>
-                                    <option value="education">Education</option>
-                                    <option value="transportation">Tranportation</option>
-                                    <option value="job">Job</option>
+                                    <!-- Options will be inserted from Local Storage -->
                                 </select>
                             </div>
                         </div>
@@ -363,6 +352,65 @@
                 </div>
             </div>
         </section>
+        <!------------------------------------------------------------------------- 
+                -------------------------- MAYRA  -------------------------- 
+        --------------------------------------------------------------------------->
+
+        <div>
+            <!------------------------------------ CATEGORIA --------------------------------------->
+            <section id="sectionCategory"
+                class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-full hidden">
+                <div class=" h-5/6">
+                    <h2 class="text-6xl p-3">
+                        Categorías
+                    </h2>
+                    <label for="categorias-input" class="text-2xl font-bold p-2 m-2">
+                        Nombre
+                    </label>
+                    <div class="p-4">
+                        <div class="flex flitems-center justify-center">
+                            <input type="text" id="inputCategory"
+                                class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                            <button id="add-category-btn"
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <ul id="categoryList" class="">
+                            <!--------------------- Completo Categorias --------------------->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-------------------------------- SECCIÓN EDITAR CATEGORIA ---------------------------->
+            <section id="sectionEdit" class="formEdit max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md hidden">
+                <div>
+                    <h2 class="text-2xl font-bold">
+                        Editar Categoría
+                    </h2>
+                    <label for="name" class="font-bold">
+                        Nombre
+                    </label>
+                    <div>
+                        <input id="inputName" type="text"
+                            class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                        <p id="textEdit" class="font-bold text-red-500 hidden">
+                            *Completar el Campo
+                        </p>
+                    </div>
+                    <div class="flex justify-end items-start self-end p-2 m-2">
+                        <button class="bg-red-500 hover:bg-red-700 m-1 text-white font-bold py-2 px-4 rounded">
+                            Cancelar
+                        </button>
+                        <button id="bttnConfirm"
+                            class="bttnConfirmEdit bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </section>
     </main>
 
     <script src="./js/main.js"></script>

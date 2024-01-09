@@ -21,22 +21,50 @@ const cleanContainer = (selector) => $(selector).innerHTML = ""
 const getData = (key) => JSON.parse(localStorage.getItem(key))
 const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data))
 
-const allOperations = getData("operations") || []
-// const allCategories = getData("categories") || defaultCategories
+const defaultCategories = [
+    {
+        id: randomId(),
+        name: 'Food',
+    },
+    {
+        id: randomId(),
+        name: 'Utilities',
+    },
+    {
+        id: randomId(),
+        name: 'Outings',
+    },
+    {
+        id: randomId(),
+        name: 'Education',
+    },
+    {
+        id: randomId(),
+        name: 'Transportation',
+    },
+    {
+        id: randomId(),
+        name: 'Job',
+    },
+];
 
-const operationsPlaceHolder = []
+
+const allOperations = getData("operations") || []
+const allCategories = getData("categories") || defaultCategories
 
 //-- -------------------------- RENDERS -------------------------- -->
 
 const renderOperations = (operations) => {
+    cleanContainer("#table")
     if (operations.length) {
         hideElement([".no-results-container"])
         showElement([".table-operations"])
         for (const operation of operations) {
+            const categorieSelected = getData("categories").find(categorie => categorie.id === operation.categorie)
             $("#table").innerHTML += `
             <tr class="flex place-content-between mb-3 text-sm"> 
                 <td class="font-semibold">${operation.description}</td>
-                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center">${operation.categorie}</td>
+                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center">${categorieSelected.name}</td>
                 <td>${operation.date}</td>
                 <td class="amount-operation font-semibold">${operation.amount}</td>
                 <td>
@@ -54,9 +82,38 @@ const renderOperations = (operations) => {
     }
 
 }
-console.log(operationsPlaceHolder)
 
-// renderOperations(operationsPlaceHolder)
+const renderCategoriesTable = (categories) => {
+    for ( const {name, id} of categories ) {
+        $('#categoryList').innerHTML += `
+        <li class="flex flex-row  justify-between">
+            <div class='space-x-2'>
+                <p class="bg-slate-100 py-1 px-1 rounded">${name}</p>
+            </div>
+            <div class="">
+                <button onclick="bttnEdit('${id}')" class="bttnEdit bg-green-500 hover:bg-green-700 text-white font-bold m-1 py-1 px-1 rounded">
+                    Editar
+                </button>
+                <button onclick="bttnremove('${id}')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded">
+                    Eliminar
+                </button>
+            </div>
+        </li>`
+    };
+};
+
+const renderCategoriesOptions = (categories) => {
+    for (const categorie of categories) {
+        $("#categories-select").innerHTML += `
+            <option value="${categorie.id}">${categorie.name}
+        `
+        $("#filter-categories").innerHTML += `
+        <option value="${categorie.id}">${categorie.name}
+    `
+    }
+}
+
+//-- -------------------------- DATA HANDLERS -------------------------- -->
 
 const setMinimumDate = () => {
 
@@ -94,7 +151,6 @@ const showFormEdit = (operationId) => {
     $("#categories-select").value = operationSelected.categorie
     $("#date-input").value = operationSelected.date
     $("#amount-input").value = operationSelected.amount
-    // add type of balance
 }
 
 const openModalDelete = (operationId, operationCategorie) => {
@@ -166,7 +222,7 @@ const calculateBalance = () => {
     }
 
     return netBalance
-};
+}
 
 //-- -------------------------- VALIDATIONS -------------------------- -->
 
@@ -216,9 +272,13 @@ const validateForm = (field) => {
 
 const initializeApp = () => {
     setData("operations", allOperations)
+    setData("categories", allCategories)
     renderOperations(allOperations)
+    renderCategoriesTable(allCategories)
+    renderCategoriesOptions(allCategories)
     setMinimumDate()
     calculateBalance()
+
     $("#new-operation-btn").addEventListener("click", () => {
         showElement(["#new-operation"])
         hideElement([".balance-container"])
@@ -237,10 +297,10 @@ const initializeApp = () => {
     })
 
     $("#cancel-operation-btn").addEventListener("click", (e) => {
-    e.preventDefault()
-    showElement([".balance-container"])
-    hideElement(["#new-operation"])
-})
+        e.preventDefault()
+        showElement([".balance-container"])
+        hideElement(["#new-operation"])
+    })
 
     $(".hide-filters").addEventListener("click", () => {
         $(".hide-filters").classList.toggle("hidden")
@@ -254,10 +314,11 @@ const initializeApp = () => {
         $("#filters").classList.toggle("hidden")
     })
 
-    $("#filter-categories").addEventListener("input", () => {
-        const categoriesId = e.target.value
+    $("#filter-categories").addEventListener("input", (e) => {
+        const categorieId = e.target.value
         const currentData = getData("operations")
-        const filteredOperations = currentData.filter(operation => operation.id === categorieId)
+        const filteredOperations = currentData.filter(operation => operation.categorie === categorieId)
+        renderOperations(filteredOperations)
     })
 
     $("#description-input").addEventListener("blur", () => validateForm("description"))
@@ -266,20 +327,3 @@ const initializeApp = () => {
 
 window.addEventListener("load", initializeApp)
 
-
-// // CANCEL BUTTON NEW OPERATION
-
-// $("#cancel-operation-btn").addEventListener("click", (e) => {
-//     e.preventDefault()
-//     $(".balance-container").classList.remove("hidden")
-//     $("#new-operation").classList.add("hidden")
-// })
-
-// // BALANCE NAV BAR
-
-// $("#balance-nav").addEventListener("click", () => {
-//     $("#new-operation").classList.add("hidden")
-//     // $("#categories-section").classList.add("hidden")
-//     // $("#report-section").classList.add("hidden")
-//     $(".balance-container").classList.remove("hidden")
-// })
