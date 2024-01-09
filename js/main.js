@@ -113,6 +113,59 @@ const renderCategoriesOptions = (categories) => {
     }
 }
 
+const renderReport = (reports) => {
+    for (const report of reports){
+        $('tableReports').innerHTML += `
+        <div class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md h-1/2">
+        <h3>Resumen</h3>
+        <div>
+            <p>Categoría con mayor ganancia</p>
+            <p>Categoría con mayor gasto</p>
+            <p>Categoría con mayor balance</p>
+            <p>Mes con mayor ganancia</p>
+            <p>Mes con mayor gasto</p>
+        </div>
+        <h3>Totales por Categorías</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Ganancia</th>
+                    <th>Gastos</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monto</td>
+                    <td>Monto</td>
+                    <td>Monto</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Totales por mes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Ganancias</th>
+                    <th>Gastos</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Ganancia</th>
+                    <th>Gastos</th>
+                    <th>Balance</th>
+                </tr>
+            </tbody>
+        </table>
+        </div>`
+    }
+}
+
 //-- -------------------------- DATA HANDLERS -------------------------- -->
 
 const setMinimumDate = () => {
@@ -323,15 +376,58 @@ const initializeApp = () => {
 
     $("#balance-nav").addEventListener("click", (e) => {
         showElement([".balance-container"])
-        hideElement(["#sectionCategory", "#new-operation"])
+        hideElement(["#sectionCategory", "#sectionReport", "#new-operation"])
     })
 
     $("#categories-nav").addEventListener("click", () => {
         showElement(["#sectionCategory"])
-        hideElement([".balance-container", "#new-operation"])
+        hideElement([".balance-container", "#new-operation", "#sectionEdit", "#sectionReport"])
+    })
+    $("#reports-nav").addEventListener("click", () => {
+        showElement(["#sectionReport"])
+        hideElement([".balance-container", "#new-operation", "#sectionCategory"])
     })
 
 }
+
+/*<!------------------------------------------------------------------------- 
+-------------------------- MAYRA  -------------------------- 
+---------------------------------------------------------------------------> */
+
+const userInfo = () => {
+    return{
+        id: randomId(),
+        name: $('#inputName').value,
+    }
+}
+const bttnEdit = (id) => {
+    //cambio de pantalla categoria
+    $('#sectionEdit').classList.remove('hidden');
+    $('#sectionCategory').classList.add('hidden');
+    const selecti = getData('pink').find(key => key.id === id);
+    $('name').value.name
+    console.log(value.name)
+    };
+    
+    $$('.bttnConfirmEdit').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        $('#sectionCategory').classList.remove('hidden');
+        $('#sectionEdit').classList.add('hidden');
+    });
+})
+
+// let operation = [];
+
+// const starOperations = (operations) => {
+//     $('#listOperaions').innerHTML = " ";
+//     let totalEarnings  = 0; //ganancias
+//     let totalExpenses = 0; //gastos
+//     for (let operation of operations){
+//         let result= "";
+//     };
+// }
+
+// getData('Operation')
 
 window.addEventListener("load", initializeApp)
 
