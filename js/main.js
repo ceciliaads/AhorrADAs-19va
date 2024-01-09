@@ -36,7 +36,7 @@ const renderOperations = (operations) => {
             $("#table").innerHTML += `
             <tr class="flex place-content-between mb-3 text-sm"> 
                 <td class="font-semibold">${operation.description}</td>
-                <td class="bg-green-100 text-green-400 rounded-md w-10 text-center">${operation.categorie}</td>
+                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center">${operation.categorie}</td>
                 <td>${operation.date}</td>
                 <td class="amount-operation font-semibold">${operation.amount}</td>
                 <td>
@@ -57,6 +57,20 @@ const renderOperations = (operations) => {
 console.log(operationsPlaceHolder)
 
 // renderOperations(operationsPlaceHolder)
+
+const setMinimumDate = () => {
+
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    
+    const formattedToday = yyyy + '-' + mm + '-' + dd;
+    console.log(formattedToday)
+
+    $("#filter-date").value = formattedToday;
+    $("#date-input").value = formattedToday;
+}
 
 const saveNewOperation = (operationId) => {
     return {
@@ -203,6 +217,7 @@ const validateForm = (field) => {
 const initializeApp = () => {
     setData("operations", allOperations)
     renderOperations(allOperations)
+    setMinimumDate()
     calculateBalance()
     $("#new-operation-btn").addEventListener("click", () => {
         showElement(["#new-operation"])
