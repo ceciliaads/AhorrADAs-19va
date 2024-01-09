@@ -371,6 +371,13 @@ const initializeApp = () => {
         renderOperations(filteredOperations)
     })
 
+    $("#filter-btype").addEventListener("input", (e) => {
+        const balanceType = e.target.value
+        const currentData = getData("operations")
+        const filteredOperations = currentData.filter(operation => operation.type === balanceType)
+        renderOperations(filteredOperations)
+    })
+
     $("#description-input").addEventListener("blur", () => validateForm("description"))
     $("#amount-input").addEventListener("blur", () => validateForm("amount"))
 
