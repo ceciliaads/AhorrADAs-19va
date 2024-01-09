@@ -397,11 +397,30 @@ const initializeApp = () => {
         showElement(["#sectionCategory"])
         hideElement([".balance-container", "#new-operation", "#sectionEdit", "#sectionReport"])
     })
+
     $("#reports-nav").addEventListener("click", () => {
         showElement(["#sectionReport"])
         hideElement([".balance-container", "#new-operation", "#sectionCategory"])
     })
 
+    $("#hamburger-menu").addEventListener("click", () => {
+        $("#mobile-menu").classList.toggle("hidden")
+    })
+
+    $("#balance-nav-mobile").addEventListener("click", (e) => {
+        showElement([".balance-container"])
+        hideElement(["#sectionCategory", "#sectionReport", "#new-operation"])
+    })
+
+    $("#categories-nav-mobile").addEventListener("click", () => {
+        showElement(["#sectionCategory"])
+        hideElement([".balance-container", "#new-operation", "#sectionEdit", "#sectionReport"])
+    })
+
+    $("#reports-nav-mobile").addEventListener("click", () => {
+        showElement(["#sectionReport"])
+        hideElement([".balance-container", "#new-operation", "#sectionCategory"])
+    })
 }
 
 /*<!------------------------------------------------------------------------- 

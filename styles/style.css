@@ -8,12 +8,19 @@
 /* -------------------------------------
 -------------------- RESPONSIVE -------------------- */
 
+@media (max-width:640px ) {
+    .nav-options-container {
+        display: none;
+    }
+}
+
 @media (max-width:1000px ) {
     body {
         overflow: scroll;
     }
     .balance-container {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .operations-container {

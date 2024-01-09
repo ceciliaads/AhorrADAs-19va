@@ -33,21 +33,21 @@
                             AhorraADAs
                         </h1>
                     </div>
-                    <div class="hidden sm:ml-6 sm:block ">
+                    <div class="nav-options-container sm:ml-6 md:block sm:hidden">
                         <div class="flex space-x-4">
 
                             <a href="#" id="balance-nav"
-                                class="text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
+                                class="balance-nav text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
                                 aria-current="page">
                                 <i class="fa-solid fa-chart-line"></i>
                                 Balance
                             </a>
-                            <a href="#" id="categories-nav" class=" text-white hover:bg-teal-500 rounded-md px-3 py-2
+                            <a href="#" id="categories-nav" class="categories-nav text-white hover:bg-teal-500 rounded-md px-3 py-2
                                 text-md font-normal">
                                 <i class="fa-solid fa-tag"></i>
                                 Categories
                             </a>
-                            <a href="#" id="reports-nav" class=" text-white hover:bg-teal-500 hover:text-white rounded-md px-3 py-2 text-md
+                            <a href="#" id="reports-nav" class="reports-nav text-white hover:bg-teal-500 hover:text-white rounded-md px-3 py-2 text-md
                                 font-normal">
                                 <i class="fa-solid fa-chart-pie"></i>
                                 Reports
@@ -55,23 +55,32 @@
                         </div>
                     </div>
                 </div>
-                <div id="hamburger-menu" class="sm:hidden">
+                <div id="hamburger-menu" class="md:hidden">
                     <i class="fa-solid fa-bars text-white"></i>
                 </div>
             </div>
         </div>
-
-        <div class="sm:hidden bg-white" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
-                <a href="#"
-                    class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Balance</a>
-                <a href="#"
-                    class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Categories</a>
-                <a href="#"
-                    class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">Reports</a>
-            </div>
-        </div>
     </nav>
+
+    <div class="hidden bg-white shadow-lg" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <a href="#" id="balance-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-chart-line"></i>
+                Balance
+            </a>
+            <a href="#" id="categories-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-tag"></i>
+                Categories
+            </a>
+            <a href="#" id="reports-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-chart-pie"></i>
+                Reports
+            </a>
+        </div>
+    </div>
 
     <!-- -------------------------- FRONT PAGE  -------------------------- -->
 
