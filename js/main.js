@@ -34,11 +34,11 @@ const renderOperations = (operations) => {
         showElement([".table-operations"])
         for (const operation of operations) {
             $("#table").innerHTML += `
-            <tr class="table-auto"> 
-                <td>${operation.description}</td>
-                <td>${operation.categorie}</td>
+            <tr class="flex place-content-between mb-3 text-sm"> 
+                <td class="font-semibold">${operation.description}</td>
+                <td class="bg-green-100 text-green-400 rounded-md w-10 text-center">${operation.categorie}</td>
                 <td>${operation.date}</td>
-                <td class="amount-table">${operation.amount}</td>
+                <td class="amount-operation font-semibold">${operation.amount}</td>
                 <td>
                     <button class="btn text-blue-500" onclick="showFormEdit('${operation.id}')"> Edit </button>
                     <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
@@ -127,22 +127,22 @@ const editOperation = () => {
 
 
 const calculateBalance = () => {
-    const currentData = getData("operations");
-    let earningsTotal = 0;
-    let expensesTotal = 0;
+    const currentData = getData("operations")
+    let earningsTotal = 0
+    let expensesTotal = 0
 
     for (const operation of currentData) {
         if (operation.type === "earning") {
-            earningsTotal += operation.amount;
+            earningsTotal += operation.amount
         } else {
-            expensesTotal += operation.amount;
+            expensesTotal += operation.amount
         }
     }
 
-    $(".earnings-sum").innerHTML = earningsTotal;
-    $(".expenses-sub").innerHTML = expensesTotal;
+    $(".earnings-sum").innerHTML = earningsTotal
+    $(".expenses-sub").innerHTML = expensesTotal
 
-    const netBalance = earningsTotal - expensesTotal;
+    const netBalance = earningsTotal - expensesTotal
     $(".totalOnWallet").innerHTML = netBalance;
 
     if (netBalance < 0) {
@@ -151,7 +151,7 @@ const calculateBalance = () => {
         $(".total-on-wallet").classList.add("text-green-500")
     }
 
-    return netBalance;
+    return netBalance
 };
 
 //-- -------------------------- VALIDATIONS -------------------------- -->

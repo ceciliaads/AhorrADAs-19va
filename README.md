@@ -20,5 +20,5 @@
 
 ## Made by:
 
--   [Cecilia Da Silva](https://github.com/ceciliaads)
+-   [Cecilia Da Silva](https://www.linkedin.com/in/ceciliaadasilva/)
 -   [Mayra Galeano](https://github.com/MayraGaleanoM)
