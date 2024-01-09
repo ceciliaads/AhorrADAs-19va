@@ -64,12 +64,12 @@ const renderOperations = (operations) => {
             $("#table").innerHTML += `
             <tr class="flex place-content-between mb-3 text-sm"> 
                 <td class="font-semibold">${operation.description}</td>
-                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center">${categorieSelected.name}</td>
-                <td>${operation.date}</td>
-                <td class="amount-operation font-semibold">${operation.amount}</td>
+                <td class="bg-green-100 text-green-400 rounded-md w-20 text-center ">${categorieSelected.name}</td>
+                <td class="">${operation.date}</td>
+                <td class="amount-operation text-left font-semibold">${operation.amount}</td>
                 <td>
                     <button class="btn text-blue-500" onclick="showFormEdit('${operation.id}')"> Edit </button>
-                    <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.categorie} ')"> Delete</button>
+                    <button type="button" class="btn text-blue-500" onclick="openModalDelete('${operation.id}','${operation.description} ')"> Delete</button>
                 </td>
             </tr>
             
@@ -140,8 +140,6 @@ const saveNewOperation = (operationId) => {
     }
 }
 
-console.log(saveNewOperation())
-
 const showFormEdit = (operationId) => {
     showElement(["#new-operation", "#edit-operation-btn", "#edit-operation-title"])
     hideElement([".table-operations", ".balance-container", "#add-operation-btn", "#new-operation-title", "#cancel-operation-btn"])
@@ -153,10 +151,10 @@ const showFormEdit = (operationId) => {
     $("#amount-input").value = operationSelected.amount
 }
 
-const openModalDelete = (operationId, operationCategorie) => {
+const openModalDelete = (operationId, operationDescription) => {
     $("#delete-btn").setAttribute("data-id", operationId)
     showElement(["#delete-modal"])
-    $(".operation-name").innerText = `${operationCategorie}`
+    $(".operation-name").innerText = `${operationDescription}`
     $("#delete-btn").addEventListener("click", () => {
         const operationId = $("#delete-btn").getAttribute("data-id")
         deleteOperation(operationId)
@@ -194,7 +192,6 @@ const editOperation = () => {
 }
 
 //-- -------------------------- BALANCE CALCULATIONS -------------------------- -->
-
 
 const calculateBalance = () => {
     const currentData = getData("operations")
@@ -281,7 +278,7 @@ const initializeApp = () => {
 
     $("#new-operation-btn").addEventListener("click", () => {
         showElement(["#new-operation"])
-        hideElement([".balance-container"])
+        hideElement([".balance-container","#sectionCategory"])
     })
 
     $("#add-operation-btn").addEventListener("click", (e) => {
@@ -323,6 +320,17 @@ const initializeApp = () => {
 
     $("#description-input").addEventListener("blur", () => validateForm("description"))
     $("#amount-input").addEventListener("blur", () => validateForm("amount"))
+
+    $("#balance-nav").addEventListener("click", (e) => {
+        showElement([".balance-container"])
+        hideElement(["#sectionCategory", "#new-operation"])
+    })
+
+    $("#categories-nav").addEventListener("click", () => {
+        showElement(["#sectionCategory"])
+        hideElement([".balance-container", "#new-operation"])
+    })
+
 }
 
 window.addEventListener("load", initializeApp)
