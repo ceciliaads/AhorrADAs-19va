@@ -1,0 +1,30 @@
+/* LABEL FILTERS */
+.select, .input {
+    width: 100%;
+}
+
+
+
+/* -------------------------------------
+-------------------- RESPONSIVE -------------------- */
+
+@media (max-width:640px ) {
+    .nav-options-container {
+        display: none;
+    }
+}
+
+@media (max-width:1000px ) {
+    body {
+        overflow: scroll;
+    }
+    .balance-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .operations-container {
+        margin-top: 25px;
+    }
+}
+

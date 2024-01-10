@@ -7,14 +7,440 @@
     <title>AhorrADAs</title>
 
     <!-- CSS LINK -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- FONT AWESOME LINK -->
+    <script src="https://kit.fontawesome.com/b82efd4820.js" crossorigin="anonymous"></script>
 
     <!-- TAILWIND CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./assets/finance-chart.png" type="image/x-icon">
 </head>
 
-<body>
-    <script src="main.js"></script>
+<body class="bg-gray-100 text-gray-700">
+
+    <!-- -------------------------- NAVBAR  -------------------------- -->
+
+    <nav class="bg-teal-300 py-4">
+        <div class="mx-auto  lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="flex flex-1 items-center justify-between ">
+                    <div class="flex flex-shrink-0 items-center hover:bg-teal-500 rounded-md px-3 py-2">
+                        <h1 class="text-white text-4xl font-medium">
+                            <i class="fa-solid fa-wallet"></i>
+                            AhorraADAs
+                        </h1>
+                    </div>
+                    <div class="nav-options-container sm:ml-6 md:block sm:hidden">
+                        <div class="flex space-x-4">
+
+                            <a href="#" id="balance-nav"
+                                class="balance-nav text-white hover:bg-teal-500 rounded-md px-3 py-2 text-md font-normal"
+                                aria-current="page">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Balance
+                            </a>
+                            <a href="#" id="categories-nav" class="categories-nav text-white hover:bg-teal-500 rounded-md px-3 py-2
+                                text-md font-normal">
+                                <i class="fa-solid fa-tag"></i>
+                                Categories
+                            </a>
+                            <a href="#" id="reports-nav" class="reports-nav text-white hover:bg-teal-500 hover:text-white rounded-md px-3 py-2 text-md
+                                font-normal">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                Reports
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="hamburger-menu" class="md:hidden">
+                    <i class="fa-solid fa-bars text-white"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hidden bg-white shadow-lg" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <a href="#" id="balance-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-chart-line"></i>
+                Balance
+            </a>
+            <a href="#" id="categories-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-tag"></i>
+                Categories
+            </a>
+            <a href="#" id="reports-nav-mobile"
+                class="text-gray-600 hover:bg-blue-50 hover:text-blue-600 block rounded-md px-3 py-2 text-base font-medium">
+                <i class="fa-solid fa-chart-pie"></i>
+                Reports
+            </a>
+        </div>
+    </div>
+
+    <!-- -------------------------- FRONT PAGE  -------------------------- -->
+
+    <main class="w-screen h-screen mx-auto p-16">
+        <!-- -------------------------- BALANCE  -------------------------- -->
+        <section class="balance-container flex">
+            <div class="balance-filters-container w-full sm:w-full md:w-6/12">
+                <div id="balance" class="bg-white rounded-md shadow-lg p-6 ml-16">
+                    <h2 class="font-semibold text-3xl">
+                        Balance
+                    </h2>
+                    <div class="mt-10">
+                        <div class="flex place-content-between">
+                            <p class="text-xl">
+                                Earnings
+                            </p>
+
+                            <p class="text-green-500">
+                                +$<span class="earnings-sum">0</span>
+                            </p>
+
+                        </div>
+                        <div class="flex place-content-between mt-5">
+                            <p class="text-xl">
+                                Expenses
+                            </p>
+                            <p class="text-red-500">
+                                -$<span class="expenses-sub">0</span>
+                            </p>
+                        </div>
+                        <div class="flex place-content-between mt-5">
+                            <p class="text-2xl">
+                                Total
+                            </p>
+                            <p class="total-on-wallet font-bold">
+                                $<span class="totalOnWallet">0</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=" bg-white rounded-md shadow-lg p-6 ml-16 mt-6">
+                    <div class="flex place-content-between">
+                        <h3 class="font-semibold text-2xl">
+                            Filters
+                        </h3>
+                        <span class="accordion hide-filters text-blue-600">
+                            Hide filters
+                        </span>
+                        <span class="accordion show-filters hidden text-blue-600">
+                            Show filters
+                        </span>
+                    </div>
+                    <div id="filters" class="mt-5">
+                        <div class="field">
+                            <label class="label text-lg font-semibold" for="filter-btype">Balance Type</label>
+                            <div class="control mt-2">
+                                <div class="">
+                                    <select id="filter-btype"
+                                        class="select border border-solid border-stone-200 rounded-md p-2">
+                                        <option value="all">All</option>
+                                        <option value="expense">Expense</option>
+                                        <option value="earning">Earning</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field mt-3">
+                            <label class="label text-lg font-semibold" for="filter-categories">Categories</label>
+                            <div class="control mt-2">
+                                <div class="">
+                                    <select
+                                        class="filter-categories select border border-solid border-stone-200 rounded-md p-2"
+                                        id="filter-categories">
+                                        <!-- Options will be inserted from Local Storage -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field mt-3">
+                            <label class="label text-lg font-semibold" for="filter-date">From</label>
+                            <div class="control mt-2">
+                                <div class="">
+                                    <input class="input border border-solid border-stone-200 rounded-md p-2" type="date"
+                                        name="" id="filter-date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field mt-3">
+                            <label class="label text-lg font-semibold" for="filtro-orden">Sort by</label>
+                            <div class="control mt-2">
+                                <div class="">
+                                    <select id="filter-sort"
+                                        class="select border border-solid border-stone-200 rounded-md p-2">
+                                        <option value="most-recent">Most Recent</option>
+                                        <option value="less-recent">Less Recent</option>
+                                        <option value="high-price">$: High to Low</option>
+                                        <option value="low-price">$: Low to High</option>
+                                        <option value="a/z">A/Z</option>
+                                        <option value="z/a">Z/A</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- -------------------------- OPERATIONS -------------------------- -->
+            <div id="operations"
+                class="operations-container container bg-white h-1/2 rounded-md shadow-lg p-6 ml-6 mr-16 pb-40">
+                <div class="flex place-content-between">
+                    <h3 class="font-semibold text-2xl">
+                        Operations
+                    </h3>
+                    <div id="new-operation-btn" class="new-operation-btn">
+                        <span class="border rounded-md text-white bg-teal-300 hover:bg-teal-500 p-3">
+                            + New Operation
+                        </span>
+                    </div>
+                </div>
+
+                <div class="no-results-container flex flex-col">
+                    <div class="mx-auto size-2/4 mt-16">
+                        <img src="./assets/ahorradas_undraw_investment.svg" alt="investment chart" class="max-w-full" />
+                    </div>
+                    <div class="mx-auto mt-16">
+                        <h4 class="text-center font-medium text-2xl">
+                            No results found
+                        </h4>
+                        <p class="text-center mt-5">
+                            Change filters or add new operations
+                        </p>
+                    </div>
+                </div>
+                <div class="container mx-auto table-operations hidden mt-10 w-100 text-lg">
+                    <table class="flex flex-col">
+                        <thead>
+                            <tr class="text-left text-md grid grid-cols-5 gap-2">
+                                <th>Description</th>
+                                <th>Categorie</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- -------------------------- DELETE MODAL  -------------------------- -->
+                <div id="delete-modal" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog"
+                    aria-modal="true">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+                    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div
+                                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                    <div class="sm:flex sm:items-start">
+                                        <div
+                                            class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                            </svg>
+                                        </div>
+                                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                            <h3 class="text-base font-semibold leading-6 text-gray-900"
+                                                id="modal-title">
+                                                Are you sure you want to delete <span class="operation-name">
+                                                    operation?</span>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                    <button type="button" id="delete-btn"
+                                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Delete</button>
+                                    <button type="button" id="cancel-dltModal-btn"
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- -------------------------- NEW OPERATION  -------------------------- -->
+        <section id="new-operation" class="mx-52 hidden">
+            <div class="container mx-auto bg-white border rounded-md shadow-lg p-6">
+                <h2 id="new-operation-title" class="font-bold text-4xl">
+                    New Operation
+                </h2>
+                <h2 id="edit-operation-title" class="font-bold text-4xl hidden">
+                    Edit operation
+                </h2>
+                <form class="form">
+                    <div class="field mt-10">
+                        <label class="label label-description font-semibold" for="description-input">Description</label>
+                        <div class="control">
+                            <div class="border border-solid border-stone-200 rounded-md p-2">
+                                <input class="input" type="text" name="" id="description-input" />
+                            </div>
+                            <p class="text-red-500 description-error hidden">
+                                <i class="fa-sharp fa-solid fa-circle-exclamation me-2"></i>
+                                This field is required
+                            </p>
+                        </div>
+                    </div>
+                    <div class="field mt-5">
+                        <label class="label font-semibold" for="amount-input">Amount</label>
+                        <div class="control mt-2">
+                            <div class="control">
+                                <div class="border border-solid border-stone-200 rounded-md p-2">
+                                    <input class="input" type="number" name="" id="amount-input" value="0" />
+                                </div>
+                                <p class="text-red-500 amount-error hidden">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation me-2"></i>
+                                    This field is required
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-5">
+                        <label class="label font-semibold" for="type-select-operation">Balance Type</label>
+                        <div class="control mt-2">
+                            <div class="select">
+                                <select id="type-select-operation"
+                                    class="select border border-solid border-stone-200 rounded-md p-2">
+                                    <option id="expenses-option" value="expense" selected>Expenses</option>
+                                    <option id="earnings-option" value="earning">Earnings</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-5">
+                        <label class="label font-semibold" for="categories-select">Categories</label>
+                        <div class="control mt-2">
+                            <div class="select">
+                                <select
+                                    class="categorias-select select border border-solid border-stone-200 rounded-md p-2"
+                                    id="categories-select">
+                                    <!-- Options will be inserted from Local Storage -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field mt-5">
+                        <label class="label font-semibold" for="date-input">Date</label>
+                        <div class="control mt-2">
+                            <div class="input border border-solid border-stone-200 rounded-md p-2">
+                                <input class="input" type="date" name="" id="date-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons flex place-content-end mt-10">
+                        <button class="bg-gray-200 hover:bg-gray-100 p-2 border rounded-md w-32 mr-2"
+                            id="cancel-operation-btn">
+                            Cancel
+                        </button>
+                        <button class="text-white bg-green-500 hover:bg-green-600 p-2 border rounded-md w-32"
+                            id="add-operation-btn">
+                            Add
+                        </button>
+                        <button class="text-white bg-green-500 hover:bg-green-600 p-2 border rounded-md w-32 hidden"
+                            id="edit-operation-btn">
+                            Edit
+                        </button>
+                    </div>
+                </form>
+
+                <div id="operation-content" class="operation-content">
+
+                </div>
+            </div>
+        </section>
+        <!------------------------------------------------------------------------- 
+                -------------------------- MAYRA  -------------------------- 
+        --------------------------------------------------------------------------->
+
+        <div>
+            <!------------------------------------ CATEGORIA --------------------------------------->
+            <section id="sectionCategory"
+                class=" max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-full hidden">
+                <div class=" h-5/6">
+                    <h2 class="text-5xl font-semibold p-3">
+                        Categories
+                    </h2>
+                    <label for="categorias-input" class="text-2xl font-bold p-2 m-2">
+                        Name
+                    </label>
+                    <div class="p-4">
+                        <div class="flex flitems-center justify-center">
+                            <input type="text" id="inputCategory"
+                                class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                            <button id="add-category-btn"
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <ul id="categoryList" class="">
+                            <!--------------------- Completo Categorias --------------------->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-------------------------------- SECCIÓN EDITAR CATEGORIA ---------------------------->
+            <section id="sectionEdit" class="formEdit max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md hidden">
+                <div>
+                    <h2 class="text-2xl font-bold">
+                        Edit Categorie
+                    </h2>
+                    <label for="name" class="font-bold">
+                        Name
+                    </label>
+                    <div>
+                        <input id="inputName" type="text"
+                            class="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500">
+                        <p id="textEdit" class="font-bold text-red-500 hidden">
+                            *Completar el Campo
+                        </p>
+                    </div>
+                    <div class="flex justify-end items-start self-end p-2 m-2">
+                        <button class="bg-red-500 hover:bg-red-700 m-1 text-white font-bold py-2 px-4 rounded">
+                            Cancel
+                        </button>
+                        <button id="bttnConfirm"
+                            class="bttnConfirmEdit bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-------------------------------- SECCIÓN REPORTES ----------------------------------->
+            <section id="sectionReport" class="max-w-5xl mx-auto bg-white p-6 m-8 rounded-md shadow-md h-1/2 hidden">
+                <h2 class="text-5xl font-semibold p-2">Reports</h2>
+                <div class="">
+                    <div class=" p-6">
+                        <figure class="max-w-md mx-auto p-4 ">
+                            <img src="https://frontend-proyecto-ahorradas.adaitw.org/imgs/chart.svg" alt="image"
+                                class="max-w-full">
+                        </figure>
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-2 px-2">
+                        <h2 class="text-2xl font-bold p-4">Insufficient Operations</h2>
+                        <p>Try adding more operations</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
