@@ -24,17 +24,17 @@
 
 -   [Cecilia Da Silva](https://www.linkedin.com/in/ceciliaadasilva/)
 
-### Responsabilities:
+        ### Responsabilities:
 
--   Navbar: all functionalities
--   Balance: all functionalities
--   Filters: all functionalities
--   Operations: all functionalities
--   Responsive
+            -   Navbar: all functionalities
+            -   Balance: all functionalities
+            -   Filters: all functionalities
+            -   Operations: all functionalities
+            -   Responsive
 
 -   [Mayra Galeano](https://github.com/MayraGaleanoM)
 
-### Responsabilities:
+        ### Responsabilities:
 
--   Categories: all functionalities
--   Reports: all functionalities
+            -   Categories: all functionalities
+            -   Reports: all functionalities
