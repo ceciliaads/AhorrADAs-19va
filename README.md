@@ -13,6 +13,8 @@
 -   HTML5
 -   CSS3
 -   JavaScript
+-   Git
+-   Github
 
 ### Framework used on this project:
 
@@ -21,4 +23,18 @@
 ## Made by:
 
 -   [Cecilia Da Silva](https://www.linkedin.com/in/ceciliaadasilva/)
+
+### Responsabilities:
+
+-   Navbar: all functionalities
+-   Balance: all functionalities
+-   Filters: all functionalities
+-   Operations: all functionalities
+-   Responsive
+
 -   [Mayra Galeano](https://github.com/MayraGaleanoM)
+
+### Responsabilities:
+
+-   Categories: all functionalities
+-   Reports: all functionalities
