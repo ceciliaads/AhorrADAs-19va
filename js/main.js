@@ -244,6 +244,35 @@ const editOperation = () => {
     setData("operations", currentData)
 }
 
+//-- -------------------------- FILTER SORT BY -------------------------- -->
+
+const filterSortBy = (selectedValue, currentData) => {
+    const sort = (property, order) => {
+        currentData.sort((a, b) => {
+            const valueA = order === "desc" ? b[property] : a[property]
+            const valueB = order === "desc" ? a[property] : b[property]
+            return typeof valueA === "number" ? valueA - valueB : valueA.localeCompare(valueB)
+        })
+    }
+
+    const sortMap = {
+        "most-recent": ["date", "desc"],
+        "less-recent": ["date", "asc"],
+        "high-price": ["amount", "desc"],
+        "low-price": ["amount", "asc"],
+        "a/z": ["description", "asc"],
+        "z/a": ["description", "desc"]
+    }
+
+    const selectedSort = selectedValue
+
+    if (sortMap[selectedSort]) {
+        const [property, order] = sortMap[selectedSort]
+        sort(property, order)
+        renderOperations(currentData)
+    }
+}
+
 //-- -------------------------- BALANCE CALCULATIONS -------------------------- -->
 
 const calculateBalance = () => {
@@ -383,6 +412,11 @@ const initializeApp = () => {
         const currentData = getData("operations")
         const filteredOperations = currentData.filter(operation => operation.date >= date)
         renderOperations(filteredOperations)
+    })
+    
+    $("#filter-sort").addEventListener("input", (e) => {
+        const currentData = getData("operations")
+        filterSortBy(e.target.value, currentData)
     })
 
     $("#description-input").addEventListener("blur", () => validateForm("description"))
