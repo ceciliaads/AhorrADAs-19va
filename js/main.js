@@ -439,6 +439,15 @@ const initializeApp = () => {
 
     $("#hamburger-menu").addEventListener("click", () => {
         $("#mobile-menu").classList.toggle("hidden")
+        $("#close-menu").classList.toggle("hidden")
+        $("#hamburger-menu").classList.toggle("hidden")
+    })
+
+    $("#close-menu").addEventListener("click", () => {
+        $("#mobile-menu").classList.toggle("hidden")
+        $("#hamburger-menu").classList.toggle("hidden")
+        $("#close-menu").classList.toggle("hidden")
+
     })
 
     $("#balance-nav-mobile").addEventListener("click", (e) => {
@@ -457,9 +466,9 @@ const initializeApp = () => {
     })
 }
 
-/*<!------------------------------------------------------------------------- 
--------------------------- MAYRA  -------------------------- 
----------------------------------------------------------------------------> */
+    /*<!------------------------------------------------------------------------- 
+    -------------------------- MAYRA  -------------------------- 
+    ---------------------------------------------------------------------------> */
 
 const userInfo = () => {
     return{
